@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: PizzaOvenHumorMeter
+    second: {fileID: 2100000, guid: 21fb55b14fe8c8440ba22ef7cef4e6f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: PizzaOvenMat
     second: {fileID: 2100000, guid: a2954dc13d5a195438926fbc22b1d70c, type: 2}
   materials:
