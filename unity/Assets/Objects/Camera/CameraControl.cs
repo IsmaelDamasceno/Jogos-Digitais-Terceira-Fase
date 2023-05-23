@@ -16,6 +16,7 @@ public class CameraControl : MonoBehaviour
 	#endregion
 	#region Privadas
 	private Vector3 _velocidadeEuler;
+	private Transform _playerRoot;
 	#endregion
 	#endregion
 
@@ -28,6 +29,8 @@ public class CameraControl : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 		// Faz o cursor ficar invisível
 		Cursor.visible = false;
+
+		_playerRoot = transform.parent.GetChild(1);
     }
 
 	/// <summary>
@@ -39,5 +42,6 @@ public class CameraControl : MonoBehaviour
 		_velocidadeEuler.y += Input.GetAxis("Mouse X") * _SensibilidadeX * Time.deltaTime;
 
 		transform.rotation = Quaternion.Euler(_velocidadeEuler);
+		_playerRoot.rotation = Quaternion.Euler(_velocidadeEuler);
     }
 }
