@@ -2,10 +2,7 @@ fileFormatVersion: 2
 guid: 643d6375264794b409d4e76ee0809807
 ModelImporter:
   serializedVersion: 22103
-  internalIDToNameTable:
-  - first:
-      74: -9173575912621056154
-    second: Flat|Cylinder.001Action
+  internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material

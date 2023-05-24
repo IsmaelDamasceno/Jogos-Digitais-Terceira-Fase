@@ -7,6 +7,8 @@ public class PizzaTest : MonoBehaviour
 {
 
     private Animator _animator;
+
+    [SerializeField]
     private float _time = 0f;
 
     void Start()
