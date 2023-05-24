@@ -25,7 +25,7 @@ public class PizzaTest : MonoBehaviour
     {
         if (other.CompareTag("Hammer") && _time < 1f)
         {
-            Debug.Log("Hammer aaaaa");
+            // Debug.Log("Hammer aaaaa");
             _time += 0.1f;
             _time = Math.Clamp(_time, 0f, 1f);
             _animator.Play("Flatten", -1, _time);

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hammer
+  - InteractionUI
   layers:
   - Default
   - TransparentFX
@@ -12,7 +13,7 @@ TagManager:
   - Hammer
   - Water
   - UI
-  - 
+  - Interactable
   - 
   - 
   - 
