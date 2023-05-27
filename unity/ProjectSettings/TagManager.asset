@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Hammer
   - InteractionUI
+  - Hand
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Hammer
+  - Item
   - Water
   - UI
   - Interactable

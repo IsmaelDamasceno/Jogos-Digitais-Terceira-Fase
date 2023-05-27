@@ -10,4 +10,8 @@ public class BakeButtonInteractioon : MonoBehaviour, IInteractable
 	{
 		Debug.Log("Ligar forno foi apertado");
 	}
+	public bool ChecarInteracao()
+	{
+		return Input.GetKeyDown(KeyCode.E);
+	}
 }

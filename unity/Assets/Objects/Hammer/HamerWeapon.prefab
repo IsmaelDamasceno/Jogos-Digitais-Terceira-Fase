@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3453648046366961955}
   - component: {fileID: 4047688472088948138}
   - component: {fileID: 6374955110504736665}
+  - component: {fileID: 7427798033838317651}
   m_Layer: 0
   m_Name: HamerWeapon
   m_TagString: Hammer
@@ -119,3 +120,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0029886167, y: 0.005525181, z: 0.003465187}
   m_Center: {x: 3.3827283e-10, y: 7.950629e-10, z: 0.003726138}
+--- !u!114 &7427798033838317651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3813756040403685622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bc5e24b3560ec40ae7efafa8fc0de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pronto: 0
