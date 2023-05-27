@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PizzaPickInteraction : MonoBehaviour, IInteractable
 {
-	public string _RotuloInteracao => "Pegar";
+	public string _RotuloInteracao => "Pegar Pizza";
 
 	public void Interagir()
 	{
-		Debug.Log("Pizza foi pega");
+		ItemController.Pegaritem(GetComponent<IItem>());
 	}
 }

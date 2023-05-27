@@ -130,7 +130,7 @@ Transform:
   - {fileID: 1243062267}
   - {fileID: 5211670286591621896}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &8800229338416356054
 CapsuleCollider:
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8483b050cb4eae340b84455af5316b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interacaoDistancia: 2
+  _interacaoDistancia: 2.5
   _interacaoMask:
     serializedVersion: 2
     m_Bits: 64
