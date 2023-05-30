@@ -151,6 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19bc5e24b3560ec40ae7efafa8fc0de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _InteracaoDistancia: 2.35
+  _InteracaoMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &-6571523574337541499
 MonoBehaviour:
   m_ObjectHideFlags: 0

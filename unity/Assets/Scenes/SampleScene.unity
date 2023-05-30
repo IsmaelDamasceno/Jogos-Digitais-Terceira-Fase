@@ -1001,6 +1001,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -438599823622674356, guid: d45015d9ea4f4f645bc67ec5e4643dd0, type: 3}
+      propertyPath: _InteracaoDistancia
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -438599823622674356, guid: d45015d9ea4f4f645bc67ec5e4643dd0, type: 3}
+      propertyPath: _InteracaoMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8557912893866376342, guid: d45015d9ea4f4f645bc67ec5e4643dd0, type: 3}
       propertyPath: m_RootOrder
       value: 7

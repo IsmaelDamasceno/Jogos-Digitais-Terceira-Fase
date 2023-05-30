@@ -23,8 +23,6 @@ public class Interactor : MonoBehaviour
             InteractionTrigger trigger = GameObject.FindGameObjectWithTag("InteractionUI").GetComponent<InteractionTrigger>();
             trigger.SetarInteracao(rotulo, true);
 
-            // Debug.Log("Detectando interação: "+interactable._RotuloInteracao);
-
             if (Input.GetKeyDown(KeyCode.E))
             {
                 interactable.Interagir();
@@ -34,6 +32,8 @@ public class Interactor : MonoBehaviour
         {
 			InteractionTrigger trigger = GameObject.FindGameObjectWithTag("InteractionUI").GetComponent<InteractionTrigger>();
 			trigger.SetarInteracao("", false);
+
+			
 		}
-    }
+	}
 }

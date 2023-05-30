@@ -8,6 +8,9 @@ using UnityEngine.InputSystem.LowLevel;
 public class HammerItem : MonoBehaviour, IItem
 {
 
+    public float _InteracaoDistancia;
+    public LayerMask _InteracaoMask;
+
     private Animator _animator;
     private Rigidbody _rigidbody;
     private MeshCollider _collider;
@@ -28,7 +31,17 @@ public class HammerItem : MonoBehaviour, IItem
         if (!_animator.GetBool("Hitting"))
         {
             _animator.SetBool("Hitting", true);
-        }
+
+            Transform camTrs = Camera.main.transform;
+			if (Physics.Raycast(camTrs.position, camTrs.forward, out RaycastHit hitInfo, _InteracaoDistancia, _InteracaoMask))
+			{
+                PizzaSmash pizza = hitInfo.collider.GetComponent<PizzaSmash>();
+                if (pizza != null)
+                {
+                    pizza.Interagir();
+				}
+			}
+		}
     }
     public void CliqueSecundario()
     {

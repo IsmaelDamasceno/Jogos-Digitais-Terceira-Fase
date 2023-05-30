@@ -39,7 +39,7 @@ public class ItemController : MonoBehaviour
 			}
 		}
 
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Q))
 		{
 			Pegaritem(null);
 		}
