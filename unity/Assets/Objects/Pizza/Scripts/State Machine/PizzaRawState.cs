@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class PizzaRawState : IState
 {
-    public string Nome => "Raw";
-
-
+    /*
+     public string Nome => "Raw";
 
     void Start()
     {
@@ -37,5 +36,22 @@ public class PizzaRawState : IState
     public void Sair()
     {
         
+    }
+     */
+    public string Nome => throw new NotImplementedException();
+
+    public void Entrar()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Sair()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Tick()
+    {
+        throw new NotImplementedException();
     }
 }

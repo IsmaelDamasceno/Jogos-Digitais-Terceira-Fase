@@ -40,7 +40,6 @@ public class StateMachine : MonoBehaviour
 
     public static void SetEstado(string estadoNome)
     {
-
         int i = 0;
         foreach(IState iEstado in _listaEstados)
         {
@@ -51,7 +50,7 @@ public class StateMachine : MonoBehaviour
                     _listaEstados[_estadoAtualId].Sair();
                 }
                 _estadoAtualId = i;
-                _listaEstados[_estadoAtualId]
+                _listaEstados[_estadoAtualId].Entrar();
             }
             i++;
         }

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 50afd383226a1924ea63b9398b338b52
 ModelImporter:
-  serializedVersion: 22103
+  serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
   - first:
@@ -12,13 +12,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: PizzaOvenHumorMeter
-    second: {fileID: 2100000, guid: 21fb55b14fe8c8440ba22ef7cef4e6f8, type: 2}
+      name: OvenButtonWheelMat
+    second: {fileID: 2100000, guid: 8b3c391fb3bfd664e852ac14772965df, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: PizzaOvenMat
-    second: {fileID: 2100000, guid: a2954dc13d5a195438926fbc22b1d70c, type: 2}
+      name: OvenDoorMaterial
+    second: {fileID: 2100000, guid: e2a71e79d2f1bab449278e272e8ee90e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OvenGlassMaterial
+    second: {fileID: 2100000, guid: c630261c05d5d204f84052d5d51715a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OvenGridMat
+    second: {fileID: 2100000, guid: dbbe963e5e36fe7429269dce4f380633, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OvenMaterial
+    second: {fileID: 2100000, guid: e8f12180c9274f545aa0984e1ba77eda, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
