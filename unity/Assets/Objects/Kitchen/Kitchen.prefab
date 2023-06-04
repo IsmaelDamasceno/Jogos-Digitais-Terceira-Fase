@@ -616,6 +616,7 @@ GameObject:
   - component: {fileID: 6214450604722086241}
   - component: {fileID: 6359652316157448697}
   - component: {fileID: 3612539099483348078}
+  - component: {fileID: 3612539099483348082}
   m_Layer: 0
   m_Name: Belt
   m_TagString: Untagged
@@ -700,6 +701,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecaf9d4a6a98bb746a4d38368b303607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &3612539099483348082
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9028344749290462954}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.027808413, y: 0.042316135, z: 0.0006832661}
+  m_Center: {x: -0.08212366, y: -0.072394185, z: -0.00650439}
 --- !u!1 &9105598773760856928
 GameObject:
   m_ObjectHideFlags: 0
