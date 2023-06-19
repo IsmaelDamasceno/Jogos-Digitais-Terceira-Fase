@@ -31,6 +31,6 @@ public class OrderSystem : MonoBehaviour
 
     void CreateOrder()
     {
-        GameObject newOrder = Instantiate(_orderPrefab, );
+        GameObject newOrder = Instantiate(_orderPrefab, _canvasObj.transform.position, Quaternion.Euler(Vector3.zero), _canvasObj.transform);
     }
 }
