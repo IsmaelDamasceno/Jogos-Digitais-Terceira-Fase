@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PizzaPickInteraction : MonoBehaviour, IInteractable
+public class JarPickInteraction : MonoBehaviour, IInteractable
 {
-    public string _RotuloInteracao => "Pegar Pizza";
+    public string _RotuloInteracao => "Pegar Molho de Tomate";
 
     public void Interagir()
     {

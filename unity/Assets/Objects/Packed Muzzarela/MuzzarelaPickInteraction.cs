@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PizzaPickInteraction : MonoBehaviour, IInteractable
+public class MuzzarelaPickInteraction : MonoBehaviour, IInteractable
 {
-    public string _RotuloInteracao => "Pegar Pizza";
+    public string _RotuloInteracao => "Pegar Mussarela";
 
     public void Interagir()
     {
@@ -13,11 +13,11 @@ public class PizzaPickInteraction : MonoBehaviour, IInteractable
 
     void Start()
     {
-
+        
     }
 
     void Update()
     {
-
+        
     }
 }
