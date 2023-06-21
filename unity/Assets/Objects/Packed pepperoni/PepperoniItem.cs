@@ -23,7 +23,7 @@ public class PepperoniItem : MonoBehaviour, IItem
         Transform maoTrs = GameObject.FindGameObjectWithTag("Hand").transform;
 
         transform.position = maoTrs.position;
-        transform.rotation = Quaternion.Euler(Vector3.zero);
+        transform.rotation = Quaternion.Euler(Vector3.left * 90f);
         transform.SetParent(maoTrs);
         _rigidbody.isKinematic = true;
         _collider.enabled = false;
