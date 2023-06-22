@@ -22,7 +22,14 @@ public class PizzaItem : MonoBehaviour, IItem
 
 	public void CliquePrincipal()
 	{
-
+		if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitInfo, 5, 1))
+		{
+			OvenController ovenController = hitInfo.collider.GetComponent<OvenController>();
+			if (ovenController != null)
+			{
+				ovenController.PorPizza(true, gameObject);
+			}
+		}
 	}
 
 	public void CliqueSecundario()
