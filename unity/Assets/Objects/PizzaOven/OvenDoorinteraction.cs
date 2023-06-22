@@ -27,4 +27,5 @@ public class OvenDoorinteraction : MonoBehaviour, IInteractable
 	{
 		_animator = GetComponent<Animator>();
 	}
+
 }
