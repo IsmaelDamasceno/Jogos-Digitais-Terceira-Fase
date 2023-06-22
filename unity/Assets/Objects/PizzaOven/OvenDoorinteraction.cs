@@ -12,10 +12,15 @@ public class OvenDoorinteraction : MonoBehaviour, IInteractable
 
 	public void Interagir()
 	{
+		float frameNormalizado = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+		if (frameNormalizado > 0f && frameNormalizado < 1f)
+		{
+			return;
+		}
+
 		_aberto = !_aberto;
-		_animator.SetBool("Abrir", !_aberto);
-		_animator.speed = _aberto ? -1f : 1f;
-		_animator.Play("OpenOvenAnimation");
+		_animator.SetFloat("AnimSpd", 1f);
+		_animator.SetBool("Aberto", _aberto);
 	}
 
 	void Start()
