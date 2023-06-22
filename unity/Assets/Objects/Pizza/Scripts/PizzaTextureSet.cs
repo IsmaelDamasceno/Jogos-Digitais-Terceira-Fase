@@ -4,13 +4,13 @@ using UnityEngine;
 
 public struct PizzaIngridient
 {
-    public PizzaIngridient(float id, string textureName)
+    public PizzaIngridient(int id, string textureName)
     {
         this.Id = id;
         this.Texture = Resources.Load<Texture>(textureName);
     }
 
-    public float Id;
+    public int Id;
     public Texture Texture;
 }
 
@@ -18,9 +18,9 @@ public static class PizzaTextureSet
 {
     public static PizzaIngridient[] s_ingridientList =
     {
-        new PizzaIngridient(0f, "PizzaBase"),
-        new PizzaIngridient(1f, "PizzaSauce"),
-        new PizzaIngridient(2.1f, "PizzaMuzzarela"),
-        new PizzaIngridient(2.2f, "PizzaPepperoni")
+        new PizzaIngridient(0, "PizzaBase"),
+        new PizzaIngridient(1, "PizzaSauce"),
+        new PizzaIngridient(2, "PizzaMuzzarela"),
+        new PizzaIngridient(3, "PizzaPepperoni")
     };
 }

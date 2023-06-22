@@ -6,7 +6,7 @@ public class PizzaMount : MonoBehaviour
 {
 
     private Material m_pizzaMat;
-    private float m_currentIngridient;
+    private int m_currentIngridient;
 
     void Start()
     {
@@ -19,16 +19,16 @@ public class PizzaMount : MonoBehaviour
         
     }
 
-    public bool MountIngridient(float id)
+    public bool MountIngridient(int id)
     {
         if (GetComponent<SkinnedMeshRenderer>().GetBlendShapeWeight(0) < 1f)
         {
             return false;
         }
 
-        if (Mathf.Floor(m_currentIngridient) + 1 == Mathf.Floor(id) || ((Mathf.Floor(m_currentIngridient) == Mathf.Floor(id)) && (m_currentIngridient < id)))
+        if (m_currentIngridient + 1 == id)
         {
-            float newIngridientId = id;
+            int newIngridientId = id;
             foreach(PizzaIngridient itrIngridient in PizzaTextureSet.s_ingridientList)
             {
                 if (itrIngridient.Id == newIngridientId)
