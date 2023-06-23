@@ -12,11 +12,16 @@ public class PizzaColliderBake: MonoBehaviour
 		_meshRenderer = GetComponent<SkinnedMeshRenderer>();
 		_collider = GetComponent<MeshCollider>();
 
+		
 		AtualizarCollider();
 	}
 
 	public void AtualizarCollider()
 	{
+		Vector3 newPos = transform.position;
+		newPos.y += 0.1f;
+		transform.position = newPos;
+
 		Mesh colliderMesh = new Mesh();
 		_meshRenderer.BakeMesh(colliderMesh);
 		_collider.sharedMesh = null;

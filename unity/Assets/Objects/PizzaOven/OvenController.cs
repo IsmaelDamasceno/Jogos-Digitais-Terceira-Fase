@@ -76,7 +76,7 @@ public class OvenController : MonoBehaviour
 
 			_pizza.transform.SetParent(_posicaoPizza);
 			_pizza.transform.localPosition = Vector3.zero;
-			_pizza.transform.localRotation = Quaternion.Euler(Vector3.left * 90f);
+			_pizza.transform.localRotation = Quaternion.Euler(Vector3.zero);
 
 			_pizza.GetComponent<Animator>().enabled = false;
 			_pizza.GetComponent<Rigidbody>().isKinematic = true;
