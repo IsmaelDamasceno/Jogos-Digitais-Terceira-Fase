@@ -23,7 +23,8 @@ public class PizzaMount : MonoBehaviour
     {
         if (GetComponent<SkinnedMeshRenderer>().GetBlendShapeWeight(0) < 1f)
         {
-            return false;
+            DialogController.MostrarMsg("Amasse a pizza primeiro!");
+			return false;
         }
 
         if (m_currentIngridient + 1 == id)
@@ -39,6 +40,10 @@ public class PizzaMount : MonoBehaviour
                 }
             }
             throw new UnityException($"Id {newIngridientId} não existe na lista");
+        }
+        else
+        {
+            DialogController.MostrarMsg("Ordem de ingredientes Incorreta!");
         }
 
         return false;
