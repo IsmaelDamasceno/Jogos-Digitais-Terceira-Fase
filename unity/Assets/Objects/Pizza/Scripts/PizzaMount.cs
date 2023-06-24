@@ -19,7 +19,7 @@ public class PizzaMount : MonoBehaviour
         
     }
 
-    public bool MountIngridient(int id)
+    public bool MontarIngrediente(int id)
     {
         if (GetComponent<SkinnedMeshRenderer>().GetBlendShapeWeight(0) < 1f)
         {

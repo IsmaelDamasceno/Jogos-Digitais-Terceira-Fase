@@ -47,7 +47,7 @@ public class PepperoniItem : MonoBehaviour, IItem
             PizzaMount pizzaMount = hitInfo.collider.GetComponent<PizzaMount>();
             if (pizzaMount != null)
             {
-                pizzaMount.MountIngridient(3);
+                pizzaMount.MontarIngrediente(3);
             }
         }
     }

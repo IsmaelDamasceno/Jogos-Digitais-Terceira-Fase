@@ -25,7 +25,7 @@ public class JarItem : MonoBehaviour, IItem
             PizzaMount pizzaMount = hitInfo.collider.GetComponent<PizzaMount>();
             if (pizzaMount != null)
             {
-                pizzaMount.MountIngridient(1);
+                pizzaMount.MontarIngrediente(1);
             }
         }
     }
