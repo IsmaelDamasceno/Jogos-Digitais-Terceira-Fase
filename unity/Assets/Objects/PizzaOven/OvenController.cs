@@ -2,25 +2,76 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OvenController : MonoBehaviour
 {
 
+	public float _TempoDeAssar;
+	public float _TempoAlerta;
+
     private bool _ligado = false;
     private bool _aberto = false;
+	private bool _assando = false;
 
     private bool _temPizza = false;
     private GameObject _pizza = null;
 	private Transform _posicaoPizza;
 
+	private GameObject _cookCanvas;
+	private RectTransform _progressBarTrs;
+
+	private GameObject _alertCanvas;
+	private Image _alertImage;
+	private Coroutine _rotinaAlerta;
+
 	void Start()
 	{
 		_posicaoPizza = transform.GetChild(0);
+
+
+		_cookCanvas = transform.GetChild(1).GetChild(0).gameObject;
+		_progressBarTrs = _cookCanvas.transform.GetChild(1).GetChild(0).GetComponent<RectTransform>();
+
+		_alertCanvas = transform.GetChild(1).GetChild(1).gameObject;
+		_alertImage = _alertCanvas.transform.GetChild(0).GetComponent<Image>();
 	}
 
 	void Update()
 	{
 
+	}
+	
+	IEnumerator Assar()
+	{
+		_cookCanvas.SetActive(true);
+		float intervalo = _TempoDeAssar / 60f;
+		for(float i = 0; i < _TempoDeAssar; i+=intervalo)
+		{
+			float porcentagem = i / _TempoDeAssar;
+			Vector3 novaEscala = new Vector3(porcentagem, 1f, 1f);
+			_progressBarTrs.localScale = novaEscala;
+
+			yield return new WaitForSeconds(intervalo);
+		}
+		_cookCanvas.SetActive(false);
+		_assando = false;
+		_rotinaAlerta = StartCoroutine(Alerta());
+	}
+	IEnumerator Alerta()
+	{
+		_alertCanvas.SetActive(true);
+
+		float intervalo = _TempoAlerta / 60f;
+		for (float i = 0; i < _TempoAlerta; i += intervalo)
+		{
+			float brilho = i / _TempoAlerta;
+			Color novaCor = new Color(brilho, brilho, brilho);
+			_alertImage.color = novaCor;
+
+			yield return new WaitForSeconds(intervalo);
+		}
+		_alertCanvas.SetActive(false);
 	}
 
 	public bool Ligar(bool valor)
@@ -45,17 +96,26 @@ public class OvenController : MonoBehaviour
 			}
 
 			_ligado = true;
+			_assando = true;
+			StartCoroutine(Assar());
 			return true;
 		}
 		else
 		{
-			if (_ligado && !_aberto && !_temPizza)
+			if (_assando)
 			{
-				_ligado = false;
-				return true;
+				DialogController.MostrarMsg("Espere a pizza assar antes de desligar!");
+				return false;
 			}
+
+			_ligado = false;
+			if (_rotinaAlerta != null)
+			{
+				_alertCanvas.SetActive(false);
+				StopCoroutine(_rotinaAlerta);
+			}
+			return true;
 		}
-		return false;
 	}
     public bool Abrir(bool valor)
     {

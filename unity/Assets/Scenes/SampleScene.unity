@@ -378,28 +378,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3bf9bdc9783db5b4291287c38dace55b, type: 3}
   m_PrefabInstance: {fileID: 90352489}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &153429676 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2859171931133069317, guid: 4e2e76708e4296946ba4e99666fca8ac, type: 3}
-  m_PrefabInstance: {fileID: 3129078600337541763}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &153429680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3235274574438601407, guid: 4e2e76708e4296946ba4e99666fca8ac, type: 3}
   m_PrefabInstance: {fileID: 3129078600337541763}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &153429681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153429676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab77d6f85f6bb2740a1d2e934e4325fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &166884959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4236,13 +4219,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8377517442812799679, guid: 4e2e76708e4296946ba4e99666fca8ac, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377517442812799679, guid: 4e2e76708e4296946ba4e99666fca8ac, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377517442812799679, guid: 4e2e76708e4296946ba4e99666fca8ac, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2859171931133069317, guid: 4e2e76708e4296946ba4e99666fca8ac, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 153429681}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e2e76708e4296946ba4e99666fca8ac, type: 3}
 --- !u!1001 &5098137064196433820
 PrefabInstance:
