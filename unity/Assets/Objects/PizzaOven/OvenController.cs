@@ -27,11 +27,25 @@ public class OvenController : MonoBehaviour
     {
 		if (valor)
 		{
-			if (!_ligado && !_aberto && _temPizza)
+
+			if (_ligado)
 			{
-				_ligado = true;
-				return true;
+				DialogController.MostrarMsg("Forno já está ligado!");
+				return false;
 			}
+			if (_aberto)
+			{
+				DialogController.MostrarMsg("Forno deve estar fechado para ligar!");
+				return false;
+			}
+			if (!_temPizza)
+			{
+				DialogController.MostrarMsg("Forno deve ter pizza para ligar!");
+				return false;
+			}
+
+			_ligado = true;
+			return true;
 		}
 		else
 		{
@@ -47,18 +61,25 @@ public class OvenController : MonoBehaviour
     {
         if (valor)
 		{
-			if (!_aberto && !_ligado)
+			if (_aberto)
 			{
-				_aberto = true;
-				return true;
+				DialogController.MostrarMsg("Forno já está aberto!");
+				return false;
 			}
+			if (_ligado)
+			{
+				DialogController.MostrarMsg("Forno deve estar desligado para abrir!");
+				return false;
+			}
+
+			_aberto = true;
+			return true;
 		}
 		else
 		{
 			_aberto = false;
 			return true;
 		}
-		return false;
     }
 
 	public bool TirarPizza()
@@ -90,6 +111,12 @@ public class OvenController : MonoBehaviour
 		if (_ligado)
 		{
 			DialogController.MostrarMsg("Forno deve estar desligado");
+			return false;
+		}
+
+		if (pizza.GetComponent<SkinnedMeshRenderer>().GetBlendShapeWeight(0) < 1f)
+		{
+			DialogController.MostrarMsg("Amasse a pizza antes de assar!");
 			return false;
 		}
 

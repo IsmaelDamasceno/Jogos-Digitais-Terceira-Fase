@@ -46,11 +46,11 @@ public static class PizzaTextureSet
 	#region Pizza Pronta Para Assar
 	public static bool PizzaProntaAssar(GameObject pizza)
 	{
-		return PizzaAssada(pizza.GetComponent<PizzaMount>().GetIngrediente());
+		return PizzaProntaAssar(pizza.GetComponent<PizzaMount>().GetIngrediente());
 	}
 	public static bool PizzaProntaAssar(PizzaMount pizzaMount)
 	{
-		return PizzaAssada(pizzaMount.GetIngrediente());
+		return PizzaProntaAssar(pizzaMount.GetIngrediente());
 	}
 	public static bool PizzaProntaAssar(int id)
 	{

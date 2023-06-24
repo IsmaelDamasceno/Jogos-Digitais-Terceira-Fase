@@ -7,6 +7,7 @@ public class OvenDoorinteraction : MonoBehaviour, IInteractable
 {
 	private Animator _animator;
 	private bool _aberto = false;
+	private OvenController _ovenController;
 
 	public string _RotuloInteracao => "Abrir Forno";
 
@@ -18,14 +19,17 @@ public class OvenDoorinteraction : MonoBehaviour, IInteractable
 			return;
 		}
 
-		_aberto = !_aberto;
-		_animator.SetFloat("AnimSpd", 1f);
-		_animator.SetBool("Aberto", _aberto);
+		if (_ovenController.Abrir(!_aberto)) {
+			_aberto = !_aberto;
+			_animator.SetFloat("AnimSpd", 1f);
+			_animator.SetBool("Aberto", _aberto);
+		}
 	}
 
 	void Start()
 	{
 		_animator = GetComponent<Animator>();
+		_ovenController = transform.parent.GetComponent<OvenController>();
 	}
 
 }
