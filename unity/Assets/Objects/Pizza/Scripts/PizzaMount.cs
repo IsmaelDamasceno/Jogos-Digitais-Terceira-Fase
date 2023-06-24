@@ -19,9 +19,15 @@ public class PizzaMount : MonoBehaviour
         
     }
 
+    public int GetIngrediente()
+    {
+        return m_currentIngridient;
+    }
+
     public bool MontarIngrediente(int id)
     {
-        if (GetComponent<SkinnedMeshRenderer>().GetBlendShapeWeight(0) < 1f)
+
+		if (GetComponent<SkinnedMeshRenderer>().GetBlendShapeWeight(0) < 1f)
         {
             DialogController.MostrarMsg("Amasse a pizza primeiro!");
 			return false;
@@ -30,22 +36,29 @@ public class PizzaMount : MonoBehaviour
         if (m_currentIngridient + 1 == id)
         {
             int newIngridientId = id;
-            foreach(PizzaIngridient itrIngridient in PizzaTextureSet.s_ingridientList)
-            {
-                if (itrIngridient.Id == newIngridientId)
-                {
-                    m_pizzaMat.SetTexture("_MainTex", itrIngridient.Texture);
-                    m_currentIngridient = newIngridientId;
-                    return true;
-                }
-            }
-            throw new UnityException($"Id {newIngridientId} não existe na lista");
+
+            m_pizzaMat.SetTexture("_MainTex", PizzaTextureSet.s_ingridientList[newIngridientId].Texture);
+            m_currentIngridient = newIngridientId;
+            return true;
         }
         else
         {
-            DialogController.MostrarMsg("Ordem de ingredientes Incorreta!");
-        }
+			DialogController.MostrarMsg("Ordem de ingredientes Incorreta!");
+			return false;
+		}
+	}
+    public bool ForcarIngrediente(int id)
+    {
+		if (GetComponent<SkinnedMeshRenderer>().GetBlendShapeWeight(0) < 1f)
+		{
+			DialogController.MostrarMsg("Amasse a pizza primeiro!");
+			return false;
+		}
 
-        return false;
-    }
+		int newIngridientId = id;
+
+		m_pizzaMat.SetTexture("_MainTex", PizzaTextureSet.s_ingridientList[newIngridientId].Texture);
+		m_currentIngridient = newIngridientId;
+		return true;
+	}
 }

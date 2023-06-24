@@ -27,7 +27,7 @@ public class PizzaItem : MonoBehaviour, IItem
 			OvenController ovenController = hitInfo.collider.GetComponent<OvenController>();
 			if (ovenController != null)
 			{
-				ovenController.PorPizza(true, gameObject);
+				ovenController.ColocarPizza(gameObject);
 			}
 		}
 	}

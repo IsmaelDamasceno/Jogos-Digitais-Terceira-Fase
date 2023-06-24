@@ -60,28 +60,66 @@ public class OvenController : MonoBehaviour
 		}
 		return false;
     }
-    public void PorPizza(bool valor, GameObject pizza = null)
-    {
-        if (valor == false)
-        {
-			ItemController.Pegaritem(_pizza.GetComponent<IItem>());
-            _pizza = null;
-            _temPizza = false;
+
+	public bool TirarPizza()
+	{
+		if (_temPizza == false)
+		{
+			DialogController.MostrarMsg("Forno está vazio!");
+			return false;
 		}
-        else
-        {
-			ItemController.Pegaritem(null);
-            _temPizza = true;
-            _pizza = pizza;
 
-			_pizza.transform.SetParent(_posicaoPizza);
-			_pizza.transform.localPosition = Vector3.zero;
-			_pizza.transform.localRotation = Quaternion.Euler(Vector3.zero);
-
-			_pizza.GetComponent<Animator>().enabled = false;
-			_pizza.GetComponent<Rigidbody>().isKinematic = true;
-			_pizza.GetComponent<MeshCollider>().enabled = false;
+		ItemController.Pegaritem(_pizza.GetComponent<IItem>());
+		_pizza = null;
+		_temPizza = false;
+		return true;
+	}
+	public bool ColocarPizza(GameObject pizza)
+	{
+		#region Verificações
+		if (pizza == null)
+		{
+			throw new UnityException("O parâmetro piza não pode ser null");
 		}
-    }
 
+		if (!_aberto)
+		{
+			DialogController.MostrarMsg("Forno deve estar aberto!");
+			return false;
+		}
+		if (_ligado)
+		{
+			DialogController.MostrarMsg("Forno deve estar desligado");
+			return false;
+		}
+
+		if (PizzaTextureSet.PizzaProntaAssar(pizza) == false)
+		{
+			DialogController.MostrarMsg("Coloque os ingredientes antes de assar!");
+			return false;
+		}
+
+		if (PizzaTextureSet.PizzaAssada(pizza))
+		{
+			DialogController.MostrarMsg("Pizza já está assada!");
+			return false;
+		}
+		#endregion
+
+		#region Lógica
+		ItemController.Pegaritem(null);
+		_temPizza = true;
+		_pizza = pizza;
+
+		_pizza.transform.SetParent(_posicaoPizza);
+		_pizza.transform.localPosition = Vector3.zero;
+		_pizza.transform.localRotation = Quaternion.Euler(Vector3.zero);
+
+		_pizza.GetComponent<Animator>().enabled = false;
+		_pizza.GetComponent<Rigidbody>().isKinematic = true;
+		_pizza.GetComponent<MeshCollider>().enabled = false;
+
+		return true;
+		#endregion
+	}
 }
