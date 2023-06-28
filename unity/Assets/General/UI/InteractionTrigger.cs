@@ -3,10 +3,19 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Controle de UI de interação
+/// </summary>
 public class InteractionTrigger : MonoBehaviour
 {
-
+    /// <summary>
+    /// O Game Object com o ícone de interação
+    /// </summary>
     private GameObject _keyInfo;
+
+    /// <summary>
+    /// O Game Object com o texto de interação
+    /// </summary>
     private GameObject _label;
 
     void Start()
@@ -18,6 +27,11 @@ public class InteractionTrigger : MonoBehaviour
         _label.SetActive(false);
     }
 
+    /// <summary>
+    /// Ativa ou desativa uma interação
+    /// </summary>
+    /// <param name="rotulo">Texto de interação</param>
+    /// <param name="ativo">Ativar ou desativar</param>
     public void SetarInteracao(string rotulo, bool ativo)
     {
 

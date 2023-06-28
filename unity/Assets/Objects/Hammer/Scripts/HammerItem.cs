@@ -4,6 +4,9 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 
+/// <summary>
+/// Componente da interface IItem da marreta
+/// </summary>
 public class HammerItem : MonoBehaviour, IItem
 {
 
@@ -25,18 +28,24 @@ public class HammerItem : MonoBehaviour, IItem
 
 	}
 
+    /// <summary>
+    /// Executa ao clicar com o botão esquerdo com o item equipado
+    /// </summary>
 	public void CliquePrincipal()
     {
         if (!_animator.GetBool("Hitting"))
         {
+            // Seta a animação de ataque
             _animator.SetBool("Hitting", true);
 
+            // Lança um raio que procura pela pizza
             Transform camTrs = Camera.main.transform;
 			if (Physics.Raycast(camTrs.position, camTrs.forward, out RaycastHit hitInfo, _InteracaoDistancia, _InteracaoMask))
 			{
                 PizzaSmash pizza = hitInfo.collider.GetComponent<PizzaSmash>();
                 if (pizza != null)
                 {
+                    // Esmaga a pizza
                     pizza.Interagir();
 				}
 			}
@@ -46,6 +55,10 @@ public class HammerItem : MonoBehaviour, IItem
     {
 
     }
+
+    /// <summary>
+    /// Equipa o item ao pega-lo
+    /// </summary>
     public void AoPegar()
     {
         Transform maoTrs = GameObject.FindGameObjectWithTag("Hand").transform;
@@ -58,6 +71,10 @@ public class HammerItem : MonoBehaviour, IItem
         _collider.enabled = false;
         gameObject.layer = LayerMask.NameToLayer("Item");
     }
+
+    /// <summary>
+    /// Desequipa o item ao soltá-lo
+    /// </summary>
     public void AoSoltar()
     {
 		transform.SetParent(null);

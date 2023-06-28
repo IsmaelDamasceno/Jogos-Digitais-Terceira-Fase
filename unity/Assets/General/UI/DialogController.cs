@@ -3,9 +3,19 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Sistema de controle de alertas que aparecem na tela
+/// </summary>
 public class DialogController: MonoBehaviour
 {
+	/// <summary>
+	/// GameObject da caixa de diálogo
+	/// </summary>
 	private static GameObject s_dialogBox;
+
+	/// <summary>
+	/// Texto da caixa de diálogo
+	/// </summary>
 	private static TextMeshProUGUI s_dialogText;
 
 	private void Start()
@@ -23,6 +33,7 @@ public class DialogController: MonoBehaviour
 
 	private void Update()
 	{
+		// Esconde o diálogo ao apertar enter
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
 			if (s_dialogBox.activeInHierarchy)
@@ -32,6 +43,10 @@ public class DialogController: MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Mostra uma mensagem na tela, e pausa o jogo, se não for especificada, esconde a caixa
+	/// </summary>
+	/// <param name="mensagem">A mensagem para exibir na caixa</param>
 	public static void MostrarMsg(string mensagem)
 	{
 

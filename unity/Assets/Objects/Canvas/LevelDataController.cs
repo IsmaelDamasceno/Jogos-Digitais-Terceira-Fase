@@ -5,10 +5,24 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Controla os dados do jogo (tempo, e score)
+/// </summary>
 public class LevelDataController : MonoBehaviour
 {
-	public static int _TempoSegundos = 320;
+    /// <summary>
+    /// Tempo em segundos restante
+    /// </summary>
+    public static int _TempoSegundos = 320;
+
+	/// <summary>
+	/// Compoenente Text do temporizador
+	/// </summary>
 	private TextMeshProUGUI _timer;
+
+	/// <summary>
+	/// Componente Text do score
+	/// </summary>
 	private static TextMeshProUGUI _pontos;
 
 	void Start()
@@ -23,6 +37,10 @@ public class LevelDataController : MonoBehaviour
 
 	}
 
+	/// <summary>
+	/// Coroutine que atualiza o tempo no timer
+	/// </summary>
+	/// <returns></returns>
 	private IEnumerator AtualizaTimer()
 	{
 		while (true)
@@ -47,6 +65,10 @@ public class LevelDataController : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Adiciona pontos ao score
+	/// </summary>
+	/// <param name="quantidade">Quantidade de pontos para adicionar</param>
 	public static void AddPontos(int quantidade)
 	{
 		int pontosAtual = int.Parse(_pontos.text);

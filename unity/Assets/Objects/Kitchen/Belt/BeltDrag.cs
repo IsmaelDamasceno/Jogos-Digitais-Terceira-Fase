@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controla o movimento dos objectos sob a esteira
+/// </summary>
 public class BeltDrag : MonoBehaviour
 {
 

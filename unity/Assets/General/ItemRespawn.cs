@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Reposiciona o object caso esse caia do mapa
+/// </summary>
 public class ItemRespawn : MonoBehaviour
 {
 
@@ -14,8 +17,10 @@ public class ItemRespawn : MonoBehaviour
 
     void Update()
     {
+        // Verifica se o objeto caiu do mapa
         if (transform.position.y <= -2.4f)
         {
+            // Reseta a posição
             transform.position = s_pontoRespawn;
 		}
     }
