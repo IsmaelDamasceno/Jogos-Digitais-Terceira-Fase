@@ -107,6 +107,11 @@ public class OvenController : MonoBehaviour
 				DialogController.MostrarMsg("Forno deve ter pizza para ligar!");
 				return false;
 			}
+			if (PizzaTextureSet.PizzaAssada(_pizza))
+			{
+				DialogController.MostrarMsg("Pizza já está assada!");
+				return false;
+			}
 
 			_ligado = true;
 			_assando = true;
