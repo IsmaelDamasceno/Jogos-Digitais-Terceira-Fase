@@ -9,7 +9,7 @@ public class MusicTrigger : MonoBehaviour
 
     void Start()
     {
-        if (MusicController.GetMusica() != _Musica)
+        if (MusicController.GetMusica() != _Musica || !MusicController._musicaSource.isPlaying)
         {
             MusicController.TocarMusica(_Musica);
         }

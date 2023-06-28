@@ -6,6 +6,9 @@ using UnityEngine;
 public class Interactor : MonoBehaviour
 {
 
+    /// <summary>
+    /// Distância pa
+    /// </summary>
     [SerializeField] private float _interacaoDistancia;
     [SerializeField] private LayerMask _interacaoMask;
 

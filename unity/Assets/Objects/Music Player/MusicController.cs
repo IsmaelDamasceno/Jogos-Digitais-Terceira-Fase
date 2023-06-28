@@ -8,17 +8,15 @@ public struct Musica
     public Musica(string nome)
     {
         this._Nome = nome;
-        this._Clip = Resources.Load<AudioClip>($"Musics/{nome}");
     }
 
-    public AudioClip _Clip;
     public string _Nome;
 }
 
 public class MusicController : MonoBehaviour
 {
 
-    private static AudioSource _musicaSource;
+    public static AudioSource _musicaSource;
     public static GameObject s_Instancia;
     public static readonly Musica[] s_Musicas =
     {
@@ -27,7 +25,7 @@ public class MusicController : MonoBehaviour
     };
     public static int s_MusicaAtual;
 
-    void Start()
+    void Awake()
     {
         if (s_Instancia == null)
         {
@@ -53,11 +51,12 @@ public class MusicController : MonoBehaviour
         {
             if (musica._Nome == nome)
             {
+                AudioClip clip = Resources.Load<AudioClip>($"Musics/{musica._Nome}");
                 if (_musicaSource.isPlaying)
                 {
                     _musicaSource.Stop();
                 }
-                _musicaSource.clip = musica._Clip;
+                _musicaSource.clip = clip;
                 _musicaSource.Play();
                 s_MusicaAtual = itr;
                 return;

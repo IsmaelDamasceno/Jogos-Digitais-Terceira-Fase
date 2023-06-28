@@ -32,7 +32,8 @@ public static class PizzaTextureSet
         new PizzaIngridient("PizzaMuzzarela"),
         new PizzaIngridient("PizzaPepperoni"),
         new PizzaIngridient("PizzaMuzzarelaBaked"),
-        new PizzaIngridient("PizzaPepperoniBaked")
+        new PizzaIngridient("PizzaPepperoniBaked"),
+        new PizzaIngridient("PizzaBurned")
     };
     private static readonly int[] s_readyToBakeList = { 2, 3 };
     private static readonly int[] s_bakedList = { 4, 5 };

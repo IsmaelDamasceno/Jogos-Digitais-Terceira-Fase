@@ -85,6 +85,7 @@ public class OvenController : MonoBehaviour
 			yield return new WaitForSeconds(intervalo);
 		}
 		_alertCanvas.SetActive(false);
+		_pizza.GetComponent<PizzaMount>().ForcarIngrediente(6);
 	}
 
 	public bool Ligar(bool valor)
