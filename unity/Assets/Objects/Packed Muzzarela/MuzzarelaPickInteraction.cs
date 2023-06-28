@@ -8,6 +8,7 @@ public class MuzzarelaPickInteraction : MonoBehaviour, IInteractable
 
     public void Interagir()
     {
+        GrabItem.TocarSom();
         ItemController.Pegaritem(GetComponent<IItem>());
     }
 

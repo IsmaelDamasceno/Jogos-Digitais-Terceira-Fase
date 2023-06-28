@@ -44,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private Transform _camTrs;
 
+    private AudioSource _footsteps;
+
     #endregion
     #endregion
 
@@ -57,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Procura pelo componente Transform na câmera, e referencia ele na variável _camTrs
         _camTrs = Camera.main.transform;
+
+        _footsteps = GetComponent<AudioSource>();
     }
 
     
@@ -83,5 +87,20 @@ public class PlayerMovement : MonoBehaviour
         _velocidade = _direcao * _Rapidez;
         _velocidade.y = _rigidbody.velocity.y;
         _rigidbody.velocity = _velocidade;
+
+        if (_velocidade.sqrMagnitude > 0.1f)
+        {
+            if (!_footsteps.isPlaying)
+            {
+                _footsteps.Play();
+            }
+        }
+        else
+        {
+            if (_footsteps.isPlaying)
+            {
+                _footsteps.Stop();
+            }
+        }
     }
 }

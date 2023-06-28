@@ -10,6 +10,7 @@ public class NewPizzaInteraction : MonoBehaviour, IInteractable
     public void Interagir()
     {
         GameObject newPizza = Instantiate(_pizzaPrefab);
+        GrabItem.TocarSom();
         ItemController.Pegaritem(newPizza.GetComponent<IItem>());
 	}
 

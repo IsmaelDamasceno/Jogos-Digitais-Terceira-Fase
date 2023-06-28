@@ -8,6 +8,7 @@ public class JarPickInteraction : MonoBehaviour, IInteractable
 
     public void Interagir()
     {
+        GrabItem.TocarSom();
         ItemController.Pegaritem(GetComponent<IItem>());
     }
 
