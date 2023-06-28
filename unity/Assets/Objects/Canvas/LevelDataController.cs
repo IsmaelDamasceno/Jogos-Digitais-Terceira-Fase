@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,12 +6,14 @@ using UnityEngine;
 
 public class LevelDataController : MonoBehaviour
 {
-	public float _TempoSegundos;
+	public static int _TempoSegundos = 130;
 	private TextMeshProUGUI _timer;
+	private static TextMeshProUGUI _pontos;
 
 	void Start()
 	{
 		_timer = transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+		_pontos = transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>();
 		StartCoroutine(AtualizaTimer());
 	}
 
@@ -35,5 +38,12 @@ public class LevelDataController : MonoBehaviour
 
 			yield return new WaitForSeconds(1f);
 		}
+	}
+
+	public static void AddPontos(int quantidade)
+	{
+		int pontosAtual = int.Parse(_pontos.text);
+		pontosAtual += quantidade;
+		_pontos.text = pontosAtual.ToString();
 	}
 }

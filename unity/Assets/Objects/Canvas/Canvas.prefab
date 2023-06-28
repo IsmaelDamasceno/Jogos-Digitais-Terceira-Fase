@@ -150,8 +150,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1679888427}
   - {fileID: 1622129956}
+  - {fileID: 1679888427}
   m_Father: {fileID: 757861196}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -500,7 +500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee343601f2a9f54ab8f39cb058ddc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _TempoSegundos: 150
 --- !u!1 &1005832237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1174,7 @@ RectTransform:
   - {fileID: 1005832238}
   - {fileID: 757861196}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

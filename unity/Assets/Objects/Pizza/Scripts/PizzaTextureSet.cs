@@ -36,6 +36,7 @@ public static class PizzaTextureSet
     };
     private static readonly int[] s_readyToBakeList = { 2, 3 };
     private static readonly int[] s_bakedList = { 4, 5 };
+	
 	private static readonly Vector2Int[] s_rawToBaked = {
 		new Vector2Int(2, 4),
 		new Vector2Int(3, 5)
@@ -54,6 +55,26 @@ public static class PizzaTextureSet
         }
         return -1;
     }
+
+	public static int GetAssadaPontos(GameObject pizza)
+	{
+		return GetAssadaPontos(pizza.GetComponent<PizzaMount>().GetIngrediente());
+	}
+	public static int GetAssadaPontos(PizzaMount pizza)
+	{
+		return GetAssadaPontos(pizza.GetIngrediente());
+	}
+	public static int GetAssadaPontos(int idNormal)
+	{
+		if (Array.IndexOf(s_bakedList, idNormal) != -1)
+		{
+			return idNormal - 3;
+		}
+		else
+		{
+			return -1;
+		}
+	}
 
 	#region Associar pizza assada à pizza crua
     public static int PizzaVersaoAssada(GameObject pizza)

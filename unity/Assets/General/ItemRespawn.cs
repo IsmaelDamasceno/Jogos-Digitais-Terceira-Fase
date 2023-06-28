@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ItemRespawn : MonoBehaviour
 {
+
+    public static Vector3 s_pontoRespawn = new Vector3(1.96700001f, 0.771000028f, -0.853999972f);
+
     void Start()
     {
         
@@ -13,7 +16,7 @@ public class ItemRespawn : MonoBehaviour
     {
         if (transform.position.y <= -2.4f)
         {
-            transform.position = new Vector3(1.96700001f, 0.771000028f, -0.853999972f);
+            transform.position = s_pontoRespawn;
 		}
     }
 }
