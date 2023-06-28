@@ -25,6 +25,8 @@ public class OvenController : MonoBehaviour
 	private Image _alertImage;
 	private Coroutine _rotinaAlerta;
 
+	private OvenTakePizzaInteraction _takePizzaScript;
+
 	void Start()
 	{
 		_posicaoPizza = transform.GetChild(0);
@@ -35,6 +37,7 @@ public class OvenController : MonoBehaviour
 
 		_alertCanvas = transform.GetChild(1).GetChild(1).gameObject;
 		_alertImage = _alertCanvas.transform.GetChild(0).GetComponent<Image>();
+		_takePizzaScript = GetComponent<OvenTakePizzaInteraction>();
 	}
 
 	void Update()
@@ -46,7 +49,8 @@ public class OvenController : MonoBehaviour
 	{
 		_cookCanvas.SetActive(true);
 		float intervalo = _TempoDeAssar / 60f;
-		for(float i = 0; i < _TempoDeAssar; i+=intervalo)
+
+		for (float i = 0; i < _TempoDeAssar; i+=intervalo)
 		{
 			float porcentagem = i / _TempoDeAssar;
 			Vector3 novaEscala = new Vector3(porcentagem, 1f, 1f);
@@ -54,10 +58,19 @@ public class OvenController : MonoBehaviour
 
 			yield return new WaitForSeconds(intervalo);
 		}
+
 		_cookCanvas.SetActive(false);
 		_assando = false;
+
+		int pizzaAssadaId = PizzaTextureSet.PizzaVersaoAssada(_pizza);
+		_pizza.GetComponent<PizzaMount>().ForcarIngrediente(pizzaAssadaId);
+
+		_takePizzaScript.enabled = true;
+		_takePizzaScript.Ativar(this);
+
 		_rotinaAlerta = StartCoroutine(Alerta());
 	}
+
 	IEnumerator Alerta()
 	{
 		_alertCanvas.SetActive(true);
@@ -144,6 +157,16 @@ public class OvenController : MonoBehaviour
 
 	public bool TirarPizza()
 	{
+		if (_ligado)
+		{
+			DialogController.MostrarMsg("Forno deve estar desligado para pegar!");
+			return false;
+		}
+		if (!_aberto)
+		{
+			DialogController.MostrarMsg("Forno deve estar aberto para pegar!");
+			return false;
+		}
 		if (_temPizza == false)
 		{
 			DialogController.MostrarMsg("Forno está vazio!");
@@ -174,22 +197,24 @@ public class OvenController : MonoBehaviour
 			return false;
 		}
 
-		if (pizza.GetComponent<SkinnedMeshRenderer>().GetBlendShapeWeight(0) < 1f)
+		PizzaEstado pizzaEstado = PizzaTextureSet.PizzaGetEstado(pizza);
+		switch(pizzaEstado)
 		{
-			DialogController.MostrarMsg("Amasse a pizza antes de assar!");
-			return false;
-		}
-
-		if (PizzaTextureSet.PizzaProntaAssar(pizza) == false)
-		{
-			DialogController.MostrarMsg("Coloque os ingredientes antes de assar!");
-			return false;
-		}
-
-		if (PizzaTextureSet.PizzaAssada(pizza))
-		{
-			DialogController.MostrarMsg("Pizza já está assada!");
-			return false;
+			case PizzaEstado.Inteira:
+			{
+				DialogController.MostrarMsg("Ammasse a pizza antes de assar!");
+				return false;
+			};
+			case PizzaEstado.Crua:
+			{
+				DialogController.MostrarMsg("Coloque os ingredientes na pizza antes de assar!");
+				return false;
+			};
+			case PizzaEstado.Assada:
+			{
+				DialogController.MostrarMsg("A pizza já está assada!");
+				return false;
+			};
 		}
 		#endregion
 

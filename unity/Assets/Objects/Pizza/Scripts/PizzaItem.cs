@@ -9,7 +9,7 @@ public class PizzaItem : MonoBehaviour, IItem
 	private Rigidbody _rigidbody;
 	private MeshCollider _collider;
 
-	void Start()
+	void Awake()
 	{
 		_animator = GetComponent<Animator>();
 		_rigidbody = GetComponent<Rigidbody>();

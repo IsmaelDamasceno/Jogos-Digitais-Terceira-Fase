@@ -19,6 +19,12 @@ public class Interactor : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, _interacaoDistancia, _interacaoMask))
         {
             IInteractable interactable = hitInfo.collider.GetComponent<IInteractable>();
+            if (interactable == null)
+            {
+                Debug.LogWarning("Interface interactable não encontrada");
+                return;
+            }
+
 			string rotulo = interactable._RotuloInteracao;
             InteractionTrigger trigger = GameObject.FindGameObjectWithTag("InteractionUI").GetComponent<InteractionTrigger>();
             trigger.SetarInteracao(rotulo, true);

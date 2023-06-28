@@ -6,18 +6,18 @@ using UnityEngine.InputSystem.XR.Haptics;
 public class BeltOffset : MonoBehaviour
 {
 
-    public static float _Velocidade = 0.1f;
-    public static BeltOffset _instancia;
-    private static Material _materialBelt;
-    private static float _texturaAltura;
-    private static Vector2 _offset;
+    public static float s_Velocidade = 0.1f;
+    public static BeltOffset s_instancia;
+    private static Material s_materialBelt;
+    private static float s_texturaAltura;
+    private static Vector2 s_offset;
 
 
     private void Awake()
     {
-        if (_instancia == null)
+        if (s_instancia == null)
         {
-            _instancia = this;
+            s_instancia = this;
             Iniciar();
         }
         else
@@ -33,14 +33,14 @@ public class BeltOffset : MonoBehaviour
 
     private void Update()
     {
-        _offset.y -= (Time.deltaTime * _Velocidade) % _texturaAltura;
-        _materialBelt.SetTextureOffset("_MainTex", _offset);
+        s_offset.y -= (Time.deltaTime * s_Velocidade) % s_texturaAltura;
+        s_materialBelt.SetTextureOffset("_MainTex", s_offset);
     }
 
     public static void Iniciar()
     {
-        _materialBelt = _instancia.GetComponent<Renderer>().material;
-        _texturaAltura = _materialBelt.GetTexture("_MainTex").height;
+        s_materialBelt = s_instancia.GetComponent<Renderer>().material;
+        s_texturaAltura = s_materialBelt.GetTexture("_MainTex").height;
     }
 
 }
