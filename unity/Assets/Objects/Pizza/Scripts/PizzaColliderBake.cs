@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Responsável por amssar e recalcular a caixa de colisão da pizza 
+/// </summary>
 public class PizzaColliderBake: MonoBehaviour
 {
 	private SkinnedMeshRenderer _meshRenderer;
@@ -16,6 +19,9 @@ public class PizzaColliderBake: MonoBehaviour
 		AtualizarCollider();
 	}
 
+	/// <summary>
+	/// Calcula a nova colisão da pizza
+	/// </summary>
 	public void AtualizarCollider()
 	{
 		Vector3 newPos = transform.position;

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Funcionalidade de item da pizza
+/// </summary>
 public class PizzaItem : MonoBehaviour, IItem
 {
 
@@ -20,6 +23,9 @@ public class PizzaItem : MonoBehaviour, IItem
 
 	}
 
+	/// <summary>
+	/// Verifica se o jogador clicou em um forno com a pizza equipada
+	/// </summary>
 	public void CliquePrincipal()
 	{
 		if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitInfo, 5, 1))
@@ -37,6 +43,9 @@ public class PizzaItem : MonoBehaviour, IItem
 
 	}
 
+	/// <summary>
+	/// Equipa o item quando esse for pego
+	/// </summary>
 	public void AoPegar()
 	{
 		Transform maoTrs = GameObject.FindGameObjectWithTag("Hand").transform;
@@ -49,6 +58,10 @@ public class PizzaItem : MonoBehaviour, IItem
 		_collider.enabled = false;
 		gameObject.layer = LayerMask.NameToLayer("Item");
 	}
+
+	/// <summary>
+	/// Desequipa o item quando esse for solto
+	/// </summary>
 	public void AoSoltar()
 	{
 		transform.SetParent(null);

@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Responsável por esmagar a pizza
+/// </summary>
 public class PizzaSmash : MonoBehaviour
 {
     private Animator _animator;
@@ -17,7 +20,9 @@ public class PizzaSmash : MonoBehaviour
 		_colliderBake = GetComponent<PizzaColliderBake>();
 	}
 
-	public string _RotuloInteracao => "Bater na pizza";
+	/// <summary>
+	/// Configura as variáveis do Animator, esmaga a pizza, e atualiza o collider
+	/// </summary>
 	public void Interagir()
 	{
 		_tempo += 0.1f;

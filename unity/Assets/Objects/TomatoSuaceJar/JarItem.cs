@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Item do Jarro de tomate
+/// </summary>
 public class JarItem : MonoBehaviour, IItem
 {
 
@@ -18,6 +21,9 @@ public class JarItem : MonoBehaviour, IItem
 
     }
 
+    /// <summary>
+    /// Coloca molho de tomate ao clicar na pizza
+    /// </summary>
     public void CliquePrincipal()
     {
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitInfo, 2, 1 << 6))
@@ -35,6 +41,9 @@ public class JarItem : MonoBehaviour, IItem
 
     }
 
+    /// <summary>
+    /// Executa ao pegar o jarro de tomate
+    /// </summary>
     public void AoPegar()
     {
         Transform maoTrs = GameObject.FindGameObjectWithTag("Hand").transform;
@@ -46,6 +55,9 @@ public class JarItem : MonoBehaviour, IItem
         _collider.enabled = false;
         gameObject.layer = LayerMask.NameToLayer("Item");
     }
+    /// <summary>
+    /// Executa ao soltar o jarro de tomate
+    /// </summary>
     public void AoSoltar()
     {
         transform.SetParent(null);

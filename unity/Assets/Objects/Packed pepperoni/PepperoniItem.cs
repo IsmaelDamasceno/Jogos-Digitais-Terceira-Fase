@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controle de item do pacote de peppeeroni
+/// </summary>
 public class PepperoniItem : MonoBehaviour, IItem
 {
     private Rigidbody _rigidbody;
@@ -18,6 +21,9 @@ public class PepperoniItem : MonoBehaviour, IItem
 
     }
 
+    /// <summary>
+    /// Coloca que o pepperoni na mão do jogador ao ser equipado
+    /// </summary>
     public void AoPegar()
     {
         Transform maoTrs = GameObject.FindGameObjectWithTag("Hand").transform;
@@ -30,6 +36,9 @@ public class PepperoniItem : MonoBehaviour, IItem
         gameObject.layer = LayerMask.NameToLayer("Item");
     }
 
+    /// <summary>
+    /// Solta o pepperoni ao desequipar
+    /// </summary>
     public void AoSoltar()
     {
         transform.SetParent(null);
@@ -40,6 +49,9 @@ public class PepperoniItem : MonoBehaviour, IItem
         gameObject.layer = LayerMask.NameToLayer("Interactable");
     }
 
+    /// <summary>
+    /// Verifica se o joador está mirando a pizza e seta o ingrediente de acordo
+    /// </summary>
     public void CliquePrincipal()
     {
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitInfo, 2, 1 << 6))

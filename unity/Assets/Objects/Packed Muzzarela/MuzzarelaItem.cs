@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controla o Item do pacote de Mussarela
+/// </summary>
 public class MuzzarelaItem : MonoBehaviour, IItem
 {
 
@@ -19,6 +22,9 @@ public class MuzzarelaItem : MonoBehaviour, IItem
 
     }
 
+    /// <summary>
+    /// Coloca o item na mão do jogador, quando ele for pego
+    /// </summary>
     public void AoPegar()
     {
         Transform maoTrs = GameObject.FindGameObjectWithTag("Hand").transform;
@@ -31,6 +37,9 @@ public class MuzzarelaItem : MonoBehaviour, IItem
         gameObject.layer = LayerMask.NameToLayer("Item");
     }
 
+    /// <summary>
+    /// Faz com que o item seja solto
+    /// </summary>
     public void AoSoltar()
     {
         transform.SetParent(null);
@@ -41,6 +50,9 @@ public class MuzzarelaItem : MonoBehaviour, IItem
         gameObject.layer = LayerMask.NameToLayer("Interactable");
     }
 
+    /// <summary>
+    /// Verifica um clique na pizza, e seta o ingrediente da pizza de acordo
+    /// </summary>
     public void CliquePrincipal()
     {
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitInfo, 2, 1 << 6))

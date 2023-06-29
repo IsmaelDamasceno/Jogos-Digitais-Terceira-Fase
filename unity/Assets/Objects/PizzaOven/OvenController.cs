@@ -4,6 +4,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Responsável por controlar todas as interações com o forno (ligar, desligar, abrir, colocar pizza, etc...)
+/// </summary>
 public class OvenController : MonoBehaviour
 {
 
@@ -45,12 +48,19 @@ public class OvenController : MonoBehaviour
 
 	}
 	
+	/// <summary>
+	/// Coroutine que atualiza o tempo, assim como a barra de timer e o canvas do forno, ativa quando uma pizza está assando
+	/// </summary>
+	/// <returns></returns>
 	IEnumerator Assar()
 	{
+		#region Ao iniciar Coroutine
 		_cookCanvas.SetActive(true);
 		float intervalo = _TempoDeAssar / 60f;
+		#endregion
 
-		for (float i = 0; i < _TempoDeAssar; i+=intervalo)
+		#region Loop da Coroutine
+		for (float i = 0; i < _TempoDeAssar; i += intervalo)
 		{
 			float porcentagem = i / _TempoDeAssar;
 			Vector3 novaEscala = new Vector3(porcentagem, 1f, 1f);
@@ -58,7 +68,9 @@ public class OvenController : MonoBehaviour
 
 			yield return new WaitForSeconds(intervalo);
 		}
+		#endregion
 
+		#region Ao finalizar Coroutine
 		_cookCanvas.SetActive(false);
 		_assando = false;
 
@@ -69,13 +81,23 @@ public class OvenController : MonoBehaviour
 		_takePizzaScript.Ativar(this);
 
 		_rotinaAlerta = StartCoroutine(Alerta());
+		#endregion
 	}
 
+	/// <summary>
+	/// Coroutine que atualiza o tempo, assim como o ícone de alerta do forno, ativa quando uma pizza assada está prestes a queimar
+	/// </summary>
+	/// <returns></returns>
 	IEnumerator Alerta()
 	{
+
+		#region Ao iniciar Coroutine
 		_alertCanvas.SetActive(true);
 
 		float intervalo = _TempoAlerta / 60f;
+		#endregion
+
+		#region Loop da Coroutine
 		for (float i = 0; i < _TempoAlerta; i += intervalo)
 		{
 			float brilho = i / _TempoAlerta;
@@ -84,30 +106,46 @@ public class OvenController : MonoBehaviour
 
 			yield return new WaitForSeconds(intervalo);
 		}
+		#endregion
+
+		#region Ao parar Coroutine
 		_alertCanvas.SetActive(false);
 		_pizza.GetComponent<PizzaMount>().ForcarIngrediente(6);
+		#endregion
 	}
 
+	/// <summary>
+	/// Tenta ligar ou desligar o forno
+	/// </summary>
+	/// <param name="valor">Verifica se o forno será ligado(true), ou desligado(false)</param>
+	/// <returns>True caso ligado/desligado com sucesso, false do contrário</returns>
 	public bool Ligar(bool valor)
     {
+		// Executa quando tentando ligar
 		if (valor)
 		{
-
+			// Certifica de que o forno não está ligado ainda
 			if (_ligado)
 			{
 				DialogController.MostrarMsg("Forno já está ligado!");
 				return false;
 			}
+
+			// Certifica de que o forno esteja fechado
 			if (_aberto)
 			{
 				DialogController.MostrarMsg("Forno deve estar fechado para ligar!");
 				return false;
 			}
+
+			// Certifica de que o forno tem pizza
 			if (!_temPizza)
 			{
 				DialogController.MostrarMsg("Forno deve ter pizza para ligar!");
 				return false;
 			}
+
+			// Certifica de que a piza dentro do forno esteja crua
 			if (PizzaTextureSet.PizzaAssada(_pizza))
 			{
 				DialogController.MostrarMsg("Pizza já está assada!");
@@ -119,14 +157,17 @@ public class OvenController : MonoBehaviour
 			StartCoroutine(Assar());
 			return true;
 		}
+		// Executa quando tentando desligar
 		else
 		{
+			// Verifica se não há pizza assando
 			if (_assando)
 			{
 				DialogController.MostrarMsg("Espere a pizza assar antes de desligar!");
 				return false;
 			}
 
+			// Desliga a Coroutine de Alerta, no caso desta estar executando
 			_ligado = false;
 			if (_rotinaAlerta != null)
 			{
@@ -136,15 +177,24 @@ public class OvenController : MonoBehaviour
 			return true;
 		}
 	}
+
+	/// <summary>
+	/// Tenta abrir/fechar o forno
+	/// </summary>
+	/// <param name="valor">Representa se o forno será abert(true), ou fechado(false)</param>
+	/// <returns></returns>
     public bool Abrir(bool valor)
     {
+		// Executa quando tentando abrir o forno
         if (valor)
 		{
+			// Certifica de que o forno está fechado
 			if (_aberto)
 			{
 				DialogController.MostrarMsg("Forno já está aberto!");
 				return false;
 			}
+			// Certifica de que o forno está desligado
 			if (_ligado)
 			{
 				DialogController.MostrarMsg("Forno deve estar desligado para abrir!");
@@ -154,6 +204,7 @@ public class OvenController : MonoBehaviour
 			_aberto = true;
 			return true;
 		}
+		// Executa quando fechando o forno
 		else
 		{
 			_aberto = false;
